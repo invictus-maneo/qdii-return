@@ -50,14 +50,16 @@
   /* 产品选择：输入框 + 模糊搜索下拉 */
   .combo{position:relative}
   .combo-list{position:absolute;z-index:30;left:0;right:0;top:calc(100% + 4px);margin:0;padding:4px;list-style:none;
-      max-height:280px;overflow-y:auto;background:#fff;border:1px solid var(--line);border-radius:8px;
+      max-height:min(60vh,460px);overflow-y:auto;background:#fff;border:1px solid var(--line);border-radius:8px;
       box-shadow:0 8px 24px rgba(16,24,40,.12);display:none}
   .combo-list.show{display:block}
-  .combo-list li{padding:8px 10px;font-size:13px;border-radius:6px;cursor:pointer;
-      white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  /* 候选改为两行：代码一行 + 完整产品名一行。名称尾部（_美元组别 等）是区分
+     同一 MStarID 下不同份额类别的关键，单行省略号会把它截掉，故不截断。 */
+  .combo-list li{padding:8px 10px;font-size:13px;border-radius:6px;cursor:pointer}
   .combo-list li:hover,.combo-list li.active{background:var(--brand-soft)}
-  .combo-list li .cid{font-weight:600}
-  .combo-list li .cname{color:var(--muted);margin-left:8px}
+  .combo-list li .cid{display:block;font-weight:600}
+  .combo-list li .cname{display:block;color:var(--muted);margin-top:2px;
+      font-size:12.5px;line-height:1.55;word-break:break-all}
   .combo-list li mark{background:#fff3bf;color:inherit;padding:0 1px;border-radius:2px}
   .combo-list li.combo-empty{color:var(--muted);cursor:default}
   .combo-list li.combo-empty:hover{background:transparent}
